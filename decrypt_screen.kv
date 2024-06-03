@@ -1,0 +1,28 @@
+<DecryptScreen>:
+    name: 'decrypt'
+    BoxLayout:
+        orientation: 'vertical'
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'top'
+            Button:
+                text: 'Back'
+                size_hint: None, None
+                size: 50, 50
+                on_release: app.root.current = 'main'
+
+        Button:
+            text: 'Select file'
+            on_release: root.select_file()
+
+        Button:
+            text: 'Decrypt'
+            on_release: root.decrypt_file()
+
+        Label:
+            id: file_label
+            text: 'No file selected'
+
+        Label:
+            id: connection_label

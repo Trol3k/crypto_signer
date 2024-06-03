@@ -1,0 +1,23 @@
+<MainScreen>:
+    name: 'main'
+    BoxLayout:
+        orientation: 'vertical'
+
+        Button:
+            text: 'Sign document'
+            on_release: app.root.current = 'signDocument'
+
+        Button:
+            text: 'Signature verification'
+            on_release: app.root.current = 'signatureVerification'
+
+        Button:
+            text: 'Encrypt'
+            on_release: app.root.current = 'encrypt'
+
+        Button:
+            text: 'Decrypt'
+            on_release: app.root.current = 'decrypt'
+
+        Label:
+            id: connection_label
