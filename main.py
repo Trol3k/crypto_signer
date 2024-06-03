@@ -1,8 +1,9 @@
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
-from usb_support import DiskChecker
 
+from sign_document_screen import SignDocumentScreen
+from usb_support import DiskChecker
 from decrypt_screen import DecryptScreen
 from encrypt_screen import EncryptScreen
 from encryption import EncryptionManager
@@ -13,10 +14,6 @@ class MainScreen(Screen):
 
 
 class SignatureVerificationScreen(Screen):
-    pass
-
-
-class SignDocumentScreen(Screen):
     pass
 
 
