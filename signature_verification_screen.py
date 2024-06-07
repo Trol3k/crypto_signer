@@ -18,10 +18,10 @@ class SignatureVerificationScreen(Screen):
         filechooser.open_file(on_selection=self.selected_file)
 
     def select_key(self):
-        filechooser.open_file(on_selection=self.selected_key)
+        filechooser.open_file(on_selection=self.selected_key, filters=["*.pem"])
 
     def select_signature(self):
-        filechooser.open_file(on_selection=self.selected_signature)
+        filechooser.open_file(on_selection=self.selected_signature, filters=["*.xml"])
 
     def selected_file(self, selection):
         if selection:
