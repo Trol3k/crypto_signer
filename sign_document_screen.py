@@ -29,9 +29,6 @@ class SignDocumentScreen(Screen):
         if not self.selected_file:
             return
 
-        secret_code = "Unguessable"
-        self.private_key = RSA.import_key(open("G:\private.pem").read(), secret_code)
-
         with open(self.selected_file, 'rb') as f:
             data = f.read()
 
