@@ -4,8 +4,10 @@
         orientation: 'vertical'
 
         Button:
+            id: sign_button
             text: 'Sign document'
             on_release: app.root.current = 'signDocument'
+            disabled: True
 
         Button:
             text: 'Signature verification'

@@ -21,14 +21,17 @@ class DiskChecker(threading.Thread):
                     connected = True
                     break
             if connected:
-                self.update_label("Device status: connected")
+                self.update_label("Device status: connected", connected)
             else:
-                self.update_label("Device status: not connected")
+                self.update_label("Device status: not connected", connected)
             time.sleep(1)
 
     @mainthread
-    def update_label(self, text):
+    def update_label(self, text, status):
         for screen_name in ['main', 'signDocument', 'signatureVerification', 'encrypt', 'decrypt']:
             screen = self.screen_manager.get_screen(screen_name)
-            if hasattr(screen, 'ids') and 'connection_label' in screen.ids:
-                screen.ids.connection_label.text = text
+            if hasattr(screen, 'ids'):
+                if 'connection_label' in screen.ids:
+                    screen.ids.connection_label.text = text
+                if screen_name == 'main' and 'sign_button' in screen.ids:
+                    screen.ids.sign_button.disabled = not status
