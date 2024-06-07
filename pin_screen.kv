@@ -1,0 +1,62 @@
+<PinScreen>:
+    pin_input_1: pin_input_1
+    pin_input_2: pin_input_2
+    pin_input_3: pin_input_3
+    pin_input_4: pin_input_4
+
+    AnchorLayout:
+        anchor_x: 'left'
+        anchor_y: 'top'
+        Button:
+            text: 'Back'
+            size_hint: None, None
+            size: 50, 50
+            on_release: app.root.current = 'main'
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: 'Please enter pin'
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: (None, None)
+                size: (300, 90)
+                spacing: 10
+
+                TextInput:
+                    id: pin_input_1
+                    multiline: False
+                    input_filter: 'int'
+                    max_text_length: 1
+                    font_size: root.font_size
+                    on_text: root.move_focus(pin_input_1, pin_input_2)
+
+                TextInput:
+                    id: pin_input_2
+                    multiline: False
+                    input_filter: 'int'
+                    max_text_length: 1
+                    font_size: root.font_size
+                    on_text: root.move_focus(pin_input_2, pin_input_3)
+
+                TextInput:
+                    id: pin_input_3
+                    multiline: False
+                    input_filter: 'int'
+                    max_text_length: 1
+                    font_size: root.font_size
+                    on_text: root.move_focus(pin_input_3, pin_input_4)
+
+                TextInput:
+                    id: pin_input_4
+                    multiline: False
+                    input_filter: 'int'
+                    max_text_length: 1
+                    font_size: root.font_size
+                    on_text_validate: root.check_pin()

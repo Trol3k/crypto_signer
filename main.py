@@ -2,6 +2,7 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 
+from pin_screen import PinScreen
 from sign_document_screen import SignDocumentScreen
 from signature_verification_screen import SignatureVerificationScreen
 from usb_support import DiskChecker
@@ -22,6 +23,7 @@ class CryptoSignerApp(App):
 
     def build(self):
         Builder.load_file('main_screen.kv')
+        Builder.load_file('pin_screen.kv')
         Builder.load_file('sign_document_screen.kv')
         Builder.load_file('signature_verification_screen.kv')
         Builder.load_file('encrypt_screen.kv')
@@ -29,6 +31,9 @@ class CryptoSignerApp(App):
 
         main_screen = MainScreen(name='main')
         self.sm.add_widget(main_screen)
+
+        pin_screen = PinScreen(name='pin')
+        self.sm.add_widget(pin_screen)
 
         sign_screen = SignDocumentScreen(name='signDocument')
         self.sm.add_widget(sign_screen)
