@@ -1,9 +1,8 @@
 import base64
 import os
-
-from Cryptodome.Cipher import PKCS1_OAEP
 from Cryptodome.Hash import SHA256
 from Cryptodome.PublicKey import RSA
+from Cryptodome.Signature import pkcs1_15
 from kivy.uix.screenmanager import Screen
 from plyer import filechooser
 from datetime import datetime
@@ -30,9 +29,7 @@ class SignDocumentScreen(Screen):
             return
 
         secret_code = "Unguessable"
-        with open("G:\private.pem", 'r') as key_file:
-            data = key_file.read()
-            self.private_key = RSA.import_key(data, secret_code)
+        self.private_key = RSA.import_key(open("G:\private.pem").read(), secret_code)
 
         with open(self.selected_file, 'rb') as f:
             data = f.read()
@@ -43,8 +40,7 @@ class SignDocumentScreen(Screen):
         file_modification_date = datetime.fromtimestamp(os.path.getmtime(self.selected_file)).isoformat()
 
         hash_obj = SHA256.new(data)
-        cipher_rsa = PKCS1_OAEP.new(self.private_key)
-        encrypted_hash = cipher_rsa.encrypt(hash_obj.digest())
+        encrypted_hash = pkcs1_15.new(self.private_key).sign(hash_obj)
 
         root = etree.Element("XAdES_Signature")
 

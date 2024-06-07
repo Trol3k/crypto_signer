@@ -14,15 +14,22 @@
 
         BoxLayout:
             orientation: 'horizontal'
+
             Button:
                 text: 'Select file'
                 on_release: root.select_file()
 
             Button:
                 text: 'Select public key'
+                on_release: root.select_key()
+
+            Button:
+                text: 'Select signature'
+                on_release: root.select_signature()
 
         Button:
             text: 'Verify'
+            on_release: root.verify()
 
         Label:
             id: file_label
