@@ -27,16 +27,22 @@ class SignatureVerificationScreen(Screen):
         if selection:
             self.file = selection[0]
             self.ids.file_label.text = f"Selected file: {self.file}"
+            if self.public_key_file is not None and self.signature_file is not None:
+                self.ids.verify_button.disabled = False
 
     def selected_key(self, selection):
         if selection:
             self.public_key_file = selection[0]
             self.ids.file_label.text = f"Selected key: {self.public_key_file}"
+            if self.file is not None and self.signature_file is not None:
+                self.ids.verify_button.disabled = False
 
     def selected_signature(self, selection):
         if selection:
             self.signature_file = selection[0]
             self.ids.file_label.text = f"Selected signature: {self.signature_file}"
+            if self.file is not None and self.public_key_file is not None:
+                self.ids.verify_button.disabled = False
 
     def verify(self):
 

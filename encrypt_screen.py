@@ -19,6 +19,7 @@ class EncryptScreen(Screen):
         if selection:
             self.selected_file = selection[0]
             self.ids.file_label.text = f"Selected file: {self.selected_file}"
+            self.ids.encrypt_button.disabled = False
 
     def encrypt_file(self):
         if not self.selected_file:

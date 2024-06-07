@@ -23,6 +23,7 @@ class SignDocumentScreen(Screen):
         if selection:
             self.selected_file = selection[0]
             self.ids.file_label.text = f"Selected file: {self.selected_file}"
+            self.ids.sign_button.disabled = False
 
     def sign_document(self):
         if not self.selected_file:
